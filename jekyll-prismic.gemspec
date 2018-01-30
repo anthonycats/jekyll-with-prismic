@@ -16,6 +16,6 @@ Gem::Specification.new do |spec|
     A Jekyll plugin for retrieving content from the Prismic.io API
   DESC
 
-  spec.add_runtime_dependency("prismic.io", "~> 1.2")
-  spec.add_runtime_dependency("jekyll", "~> 3.0.0")
+  spec.add_runtime_dependency("prismic.io", "~> 1.6.1")
+  spec.add_runtime_dependency("jekyll", "~> 3.7.2")
 end
