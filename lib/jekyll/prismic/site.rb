@@ -30,7 +30,7 @@ module Jekyll
     def prismic_document(id)
       begin
         response = prismic.form('everything')
-          .query(::Prismic::Predicates::at('document.id', id))
+          .query(::Prismic::Predicates::at('document.type', id))
           .submit(prismic_ref)
 
         response.results.first
