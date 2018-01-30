@@ -1,4 +1,6 @@
-# jekyll-prismic
+# Jekyll Prismic
+
+Compatible with jekyll ~> 3.7.0
 
 ## Install
 
@@ -11,7 +13,7 @@ gem "jekyll-prismic"
 Then add "jekyll-prismic" to your gems in `_config.yml`:
 
 ```
-gems:
+plugins:
     - jekyll-prismic
 ```
 
@@ -61,12 +63,12 @@ This plugin provides the `site.prismic` template variable. This template provide
 
 ### Using Collections
 
-Collections are accessed by their name in `site.prismic.collections`. The `posts` collections is available at `site.prismic.collections.posts`.
+Collections are accessed by their name in `site.prismicData.collections`. The `posts` collections is available at `site.prismicData.collections.posts`.
 
 To list all documents of the collection:
 
 ```
-{% for post in site.prismic.collections.posts %}
+{% for post in site.prismicData.collections.posts %}
 <article>
     <header>
         {{ post.fragments.title.html }}
@@ -78,16 +80,16 @@ To list all documents of the collection:
 {% endfor %}
 ```
 
-### Using bookmarks
+### Using Single-type
 
-Prismic’s bookmarks are a handy way to load documents for things like error pages or site configuration. Bookmarks can be accessed with the `site.prismic.bookmarks` object. Each bookmark is returned as document, fetched from the API.
+Prismic’s singe-type are a handy way to load documents for things like error pages or site configuration. Bookmarks can be accessed with the `site.prismicData.single` object. Each bookmark is returned as document, fetched from the API.
 
 Suppose, we have an error document `404.html` and a bookmark named `errorpage` in Prismic, our template would look this way:
 
 ```html
 ---
 ---
-{% assign document = site.prismic.bookmarks.errorpage %}
+{% assign document = site.prismicData.single.errorpage %}
 
 <header>{{ document.fragments.title.html }}</header>
 <main>
