@@ -207,7 +207,6 @@ module Jekyll
       end
 
       def single
-        puts @site.prismic.types
         @types ||= PrismicSingleDrop.new(@site, @site.prismic.types)
       end
     end
@@ -220,7 +219,6 @@ module Jekyll
       end
 
       def [](type)
-        puts @types[type]
         PrismicDocumentDrop.new(@site.prismic_document(@types[type]), @site.prismic_link_resolver)
       end
     end
