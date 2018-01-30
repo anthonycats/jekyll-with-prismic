@@ -1,6 +1,8 @@
-# Jekyll Prismic
+# Jekyll with Prismic
 
 Compatible with jekyll ~> 3.7.0
+
+The plugin is based on https://github.com/CHH/jekyll-prismic
 
 ## Install
 
