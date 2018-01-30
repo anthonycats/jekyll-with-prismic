@@ -206,24 +206,22 @@ module Jekyll
         @collections ||= PrismicCollectionsDrop.new(@site.prismic_collections, @site.prismic_link_resolver)
       end
 
-      def tags
-        @tags ||= @site.prismic.tags
-      end
-
-      def bookmarks
-        @bookmarks ||= PrismicBookmarksDrop.new(@site, @site.prismic.bookmarks)
+      def single
+        puts @site.prismic.types
+        @types ||= PrismicSingleDrop.new(@site, @site.prismic.types)
       end
     end
 
-    # Handles Prismic bookmarks in Liquid, and fetches the documents on demand
-    class PrismicBookmarksDrop < Liquid::Drop
-      def initialize(site, bookmarks)
+    # Handles Prismic Single-type in Liquid, and fetches the documents on demand
+    class PrismicSingleDrop < Liquid::Drop
+      def initialize(site, types)
         @site = site
-        @bookmarks = bookmarks
+        @types = types
       end
 
-      def [](bookmark)
-        PrismicDocumentDrop.new(@site.prismic_document(@bookmarks[bookmark]), @site.prismic_link_resolver)
+      def [](type)
+        puts @types[type]
+        PrismicDocumentDrop.new(@site.prismic_document(@types[type]), @site.prismic_link_resolver)
       end
     end
   end
