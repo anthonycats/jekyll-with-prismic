@@ -3,12 +3,12 @@ require "jekyll/prismic/version"
 
 Gem::Specification.new do |spec|
   spec.version = Jekyll::Prismic::VERSION
-  spec.homepage = "https://github.com/MediaComem/jekyll-prismic"
-  spec.authors = ["Media Engineering Institute"]
+  spec.homepage = "https://github.com/MediaComem/jekyll-with-prismic"
+  spec.authors = ["Media Engineering Institute", "Christoph Hochstrasser"]
   spec.email = ["mei@heig-vd.ch"]
   spec.files = %W(README.md LICENSE) + Dir["lib/**/*"]
   spec.summary = "Prismic.io integration for Jekyll"
-  spec.name = "jekyll-prismic2"
+  spec.name = "jekyll-with-prismic"
   spec.license = "MIT"
   spec.has_rdoc = false
   spec.require_paths = ["lib"]
