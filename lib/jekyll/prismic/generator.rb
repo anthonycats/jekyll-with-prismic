@@ -22,7 +22,6 @@ module Jekyll
         @collection = collection
         @document = document
 
-        @dir = @collection.config['output_dir'] || collection.collection_name
         # Default file name, can be overwritten by permalink frontmatter setting
         @name = "#{document.slug}-#{document.id}.html"
 
@@ -41,6 +40,7 @@ module Jekyll
         Utils.deep_merge_hashes({
           :slug => @document.slug,
           :id => @document.id,
+          :lang => @document.lang,
           :uid => @document.uid,
           :type => @document.type,
           :collection => @collection.collection_name

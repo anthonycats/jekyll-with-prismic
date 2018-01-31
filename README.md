@@ -30,28 +30,28 @@ prismic:
     # then is expanded and returned when generating the document’s URL
     links:
         post:
-            permalink: /posts/:slug-:id/
+            permalink: /:lang/news/:slug-:id/
     # Collections, key is used to access in the site.prismic.collections
     # template variable
     collections:
         # Example for a "posts" collection
         posts:
             # Query the documents by type (optional)
-            type: post
+            type: new
             # Collection name (optional)
-            form: posts
+            form: news
             # Permalink used to generate the output files. This should match an
             # entry in "links", so documents link to the right output files
-            permalink: /posts/:slug-:id/
+            permalink: /:lang/news/:slug-:id/
             # Layout file for this collection
-            layout: prismic_post.html
+            layout: prismic_new.html
             # Max quantity of items (optional, default is 20)
             page_size: 100
             # Additional queries (optional)
             query:
                 - ["missing", "my.post.allow_comments"]
             # Order posts in the collection by a fragment (optional)
-            orderings: '[my.post.date desc]'
+            orderings: '[my.new.date desc]'
             # Generate output files or not (default: false)
             output: true
             # Limit output to a number of files, useful for large collections

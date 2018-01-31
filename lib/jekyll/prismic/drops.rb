@@ -33,6 +33,10 @@ module Jekyll
             @document.tags
         end
 
+        def lang
+            @document.lang
+        end
+
         def href
             @document.href
         end
