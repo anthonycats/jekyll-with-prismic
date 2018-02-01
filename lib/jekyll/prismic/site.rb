@@ -88,8 +88,7 @@ module Jekyll
         
         exit
     end
-    
-    process_org
+     
     # Variables
     #-------------------------------------------------------------------------
     
@@ -106,6 +105,10 @@ module Jekyll
     self.config[        'lang'] = languages.first          # Current language being processed
     self.config['baseurl_root'] = baseurl_org              # Baseurl of website root (without the appended language code)
     
+    # Build the website for root content
+
+    @exclude += ['*.html'] # Exclude all html files
+    process_org
     
     # Build the website for the other languages
     #-------------------------------------------------------------------------
@@ -123,7 +126,7 @@ module Jekyll
       puts "Building site for language: \"#{self.config['lang']}\" to: #{self.dest}"
 
       exclude_from_localizations = self.config['exclude_from_localizations']
-      @exclude                   = @exclude + exclude_from_localizations
+      @exclude                   = exclude_org + exclude_from_localizations
       
       process_org
       @exclude = exclude_org

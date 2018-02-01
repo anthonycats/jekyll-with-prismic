@@ -15,8 +15,8 @@ module Jekyll
 	    static_files  = payload["site"]["static_files"]
 	    exclude_paths = payload["site"]["exclude_from_localizations"]
 
-	    if default_lang != current_lang
-	      static_files.delete_if do |static_file|
+			if default_lang != current_lang
+				static_files.delete_if do |static_file|
 	        
 	        # Remove "/" from beginning of static file relative path
 	        static_file_r_path    = static_file.instance_variable_get(:@relative_path).dup
