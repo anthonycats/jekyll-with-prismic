@@ -35,7 +35,7 @@ module Jekyll
         end
 
         form.query(*queries)
-
+        form.lang(@site.config['lang'])
         if @config['orderings'] != nil
           form.orderings(@config['orderings'])
         end
