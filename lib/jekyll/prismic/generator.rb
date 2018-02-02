@@ -32,7 +32,7 @@ module Jekyll
         if @collection.config.key? 'permalink'
           self.data['permalink'] = @collection.config['permalink']
         end
-
+        document = PrismicDocumentDrop.new(document, site.prismic_link_resolver)
         self.data['document'] = document
       end
 
