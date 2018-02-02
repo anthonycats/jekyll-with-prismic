@@ -95,6 +95,10 @@ module Jekyll
                 @fragment.as_text
             when "date" then
                 @fragment.value
+            when "latitude" then
+                @fragment.latitude
+            when "longitude" then
+                @fragment.longitude
             else
                 @fragment.send(attribute.to_sym)
             end
