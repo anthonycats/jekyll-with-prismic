@@ -87,11 +87,14 @@ module Jekyll
         end
 
         def [](attribute)
+            
             case attribute
             when "html" then
                 @fragment.as_html(@link_resolver)
             when "text" then
                 @fragment.as_text
+            when "date" then
+                @fragment.value
             else
                 @fragment.send(attribute.to_sym)
             end
