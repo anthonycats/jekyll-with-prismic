@@ -122,6 +122,7 @@ module Jekyll
       @dest                  = dest_org    + "/" + config['path']
       self.config['baseurl'] = baseurl_org + "/" + config['path']
       self.config['lang']    =                     lang
+      self.config['langShort'] =                   config['path']
       
       puts "Building site for language: \"#{self.config['lang']}\" to: #{self.dest}"
 
