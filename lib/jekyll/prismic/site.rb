@@ -99,10 +99,10 @@ module Jekyll
     
     # Site building only variables
     languages                   = self.config['languages'] # List of languages set on _config.yml
-    
+
     # Site wide plugin configurations
-    self.config['default_lang'] = languages.first          # Default language (first language of array set on _config.yml)
-    self.config[        'lang'] = languages.first          # Current language being processed
+    self.config['default_lang'] = languages.first[0]          # Default language (first language of array set on _config.yml)
+    self.config[        'lang'] = languages.first[0]          # Current language being processed
     self.config['baseurl_root'] = baseurl_org              # Baseurl of website root (without the appended language code)
     
     # Build the website for root content
@@ -116,11 +116,11 @@ module Jekyll
     # Remove .htaccess file from included files, so it wont show up on translations folders.
     self.include -= [".htaccess"]
     
-    languages.each do |lang|
+    languages.each do |lang, config|
       
       # Language specific config/variables
-      @dest                  = dest_org    + "/" + lang
-      self.config['baseurl'] = baseurl_org + "/" + lang
+      @dest                  = dest_org    + "/" + config['path']
+      self.config['baseurl'] = baseurl_org + "/" + config['path']
       self.config['lang']    =                     lang
       
       puts "Building site for language: \"#{self.config['lang']}\" to: #{self.dest}"
