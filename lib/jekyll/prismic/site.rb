@@ -40,6 +40,19 @@ module Jekyll
       end
     end
 
+    def prismic_document_by_id(id)
+      begin
+        response = prismic.form('everything')
+          .query(::Prismic::Predicates::at('document.id', id))
+          .lang(self.config['lang'])
+          .submit(prismic_ref)
+
+        response.results.first
+      rescue ::Prismic::SearchForm::FormSearchException
+        nil
+      end
+    end
+
     def prismic_link_resolver
       @prismic_link_resolver ||= ::Prismic.link_resolver prismic_ref do |link|
         if @config['prismic'] != nil and @config['prismic']['links'] != nil

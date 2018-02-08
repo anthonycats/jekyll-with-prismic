@@ -226,6 +226,21 @@ module Jekyll
       def single
         @types ||= PrismicSingleDrop.new(@site, @site.prismic.types)
       end
+
+      def contentById
+        @id ||= PrismicContentByIdDrop.new(@site)
+      end
+    end
+
+    # Handles Prismic Single-type in Liquid, and fetches the documents on demand
+    class PrismicContentByIdDrop < Liquid::Drop
+      def initialize(site)
+        @site = site
+      end
+
+      def [](id)
+        PrismicDocumentDrop.new(@site.prismic_document_by_id(id), @site.prismic_link_resolver)
+      end
     end
 
     # Handles Prismic Single-type in Liquid, and fetches the documents on demand
