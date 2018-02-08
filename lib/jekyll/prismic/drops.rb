@@ -41,6 +41,10 @@ module Jekyll
             @document.href
         end
 
+        def views
+            @document.views
+        end
+
         def fragments
             PrismicFragmentsDrop.new(@document.fragments, @link_resolver)
         end
@@ -87,7 +91,7 @@ module Jekyll
         end
 
         def [](attribute)
-            
+
             case attribute
             when "html" then
                 @fragment.as_html(@link_resolver)
@@ -99,6 +103,8 @@ module Jekyll
                 @fragment.latitude
             when "longitude" then
                 @fragment.longitude
+            when /^view_(.+?)_(.+)$/ then
+                @fragment.get_view($1).send($2)
             else
                 @fragment.send(attribute.to_sym)
             end
