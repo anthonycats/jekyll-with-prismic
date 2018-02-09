@@ -41,6 +41,10 @@ module Jekyll
             @document.href
         end
 
+        def views
+            @document.views
+        end
+
         def fragments
             PrismicFragmentsDrop.new(@document.fragments, @link_resolver)
         end
@@ -87,11 +91,20 @@ module Jekyll
         end
 
         def [](attribute)
+
             case attribute
             when "html" then
                 @fragment.as_html(@link_resolver)
             when "text" then
                 @fragment.as_text
+            when "date" then
+                @fragment.value
+            when "latitude" then
+                @fragment.latitude
+            when "longitude" then
+                @fragment.longitude
+            when /^view_(.+?)_(.+)$/ then
+                @fragment.get_view($1).send($2)
             else
                 @fragment.send(attribute.to_sym)
             end
@@ -212,6 +225,21 @@ module Jekyll
 
       def single
         @types ||= PrismicSingleDrop.new(@site, @site.prismic.types)
+      end
+
+      def contentById
+        @id ||= PrismicContentByIdDrop.new(@site)
+      end
+    end
+
+    # Handles Prismic Single-type in Liquid, and fetches the documents on demand
+    class PrismicContentByIdDrop < Liquid::Drop
+      def initialize(site)
+        @site = site
+      end
+
+      def [](id)
+        PrismicDocumentDrop.new(@site.prismic_document_by_id(id), @site.prismic_link_resolver)
       end
     end
 
