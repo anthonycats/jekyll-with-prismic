@@ -22,6 +22,15 @@ plugins:
 ## Configuration
 
 ```yaml
+
+exclude_from_localizations: ["asset","css","images","js"]
+
+languages:
+  en-gb:
+    path: 'en'
+  fr-fr:
+    path: 'fr'
+
 prismic:
     # Your repository endpoint
     endpoint: https://lesbonneschoses.prismic.io/api
