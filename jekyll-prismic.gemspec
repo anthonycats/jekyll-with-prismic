@@ -17,5 +17,5 @@ Gem::Specification.new do |spec|
   DESC
 
   spec.add_runtime_dependency("prismic.io", "~> 1.6.1")
-  spec.add_runtime_dependency("jekyll", "~> 3.7.0")
+  spec.add_runtime_dependency("jekyll", ">= 3.7.0", "< 3.9.0")
 end
